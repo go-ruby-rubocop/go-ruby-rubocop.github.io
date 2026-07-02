@@ -1,0 +1,31 @@
+baseURL = "https://go-ruby-rubocop.github.io/"
+title = "go-ruby-rubocop"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "Cop framework & Offense model"
+  status = "ready"
+  blurb = "A `Cop` interface (`Inspect(*Source, CopConfig) []Offense`), an `Offense{CopName, Location, Message, Severity, Correctable, Correction}` model, a `Registry` and a `Runner` (the commissioner) that runs every enabled cop over a lexed+parsed `Source` and returns offenses in RuboCop's report order."
+[[params.phases]]
+  name = "Core cop set (22 cops)"
+  status = "ready"
+  blurb = "A faithful core set of 22 cops across **Layout / Style / Lint / Metrics** — detection, location and message text validated differentially against the `rubocop` gem rather than a fake of the gem's ~500-cop breadth."
+[[params.phases]]
+  name = "Configuration (.rubocop.yml)"
+  status = "ready"
+  blurb = "`ParseConfig` reads a `.rubocop.yml` (via go-ruby-yaml) into a `Config`: `AllCops.DisabledByDefault`, per-cop `Enabled`, and per-cop params (`Max`, `EnforcedStyle`, …). A cop's effective config is its built-in default merged with the file's overrides."
+[[params.phases]]
+  name = "Formatters"
+  status = "ready"
+  blurb = "`SimpleTextFormatter` (`--format simple`) and `ProgressFormatter` (`--format progress`), including the byte-faithful summary line (`N files inspected, M offenses detected[, K offenses autocorrectable]`)."
+[[params.phases]]
+  name = "go-ruby-parser AST integration"
+  status = "ready"
+  blurb = "Built on the [go-ruby-parser](https://github.com/go-ruby-parser/parser) Ruby AST and lexer: each cop inspects a Ruby source string through its lines, its token stream and its AST — no Ruby runtime, each cop also computing a source-range `Correction` the host applies."
+[[params.phases]]
+  name = "Differential oracle & coverage"
+  status = "ready"
+  blurb = "A corpus of Ruby snippets inspected both here and by the `rubocop` gem, cop name + line/col + message plus formatter output compared byte-for-byte; 100% coverage, gofmt + go vet clean, green across all six 64-bit Go arches and three OSes."
