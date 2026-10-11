@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{/* Dark Reader repaints pages that already draw their own dark theme, as this one does: ask it to stand aside. */}}
+<meta name="darkreader-lock">
 <title>{{ .Site.Title }} — Ruby's RuboCop linter core in pure Go: cops, offenses and .rubocop.yml, no cgo</title>
 <meta name="description" content="go-ruby-rubocop — a pure-Go reimplementation of the core of Ruby's RuboCop linter: the cop/offense framework, a core cop set, the .rubocop.yml config model and the default formatters, no cgo.">
 <style>
